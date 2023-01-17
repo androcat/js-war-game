@@ -10,7 +10,7 @@ body {
   grid-template-columns: repeat(2, 4rem);
   grid-template-rows: 7rem 2rem 7rem;
   gap: 0.5rem;
-  cursor: pointer;
+  /* cursor: pointer; */
   justify-content: center;
   padding-top: 1rem;
 }
