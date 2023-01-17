@@ -1,4 +1,3 @@
-export default function Player(deck, card) {
-  this.deck = deck;
-  this.card = card;
+export default function Player() {
+  this.hand = [];
 }
