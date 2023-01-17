@@ -1,21 +1,45 @@
-export default function Game(player1, player2) {
-  this.player1 = player1;
-  this.player2 = player2;
+import Player from "./Player.js";
+import Deck from "./Deck.js";
 
-  let player1Points = 0;
-  let player2Points = 0;
+export default function Game() {
+  this.player1 = new Player();
+  this.player2 = new Player();
+  this.deck = new Deck();
+  this.pile = [];
 
-  if (player1.card.value > player2.card.value) {
-    player1Points++;
-    //update the deck size here
-  } else if (player1.card.value < player2.card.value) {
-    player2Points++;
-    //update the deck size here
-  } else {
-    //war
-    for (let i = 0; i < 3; i++) {
-      player1.deck.pop();
-      player2.deck.pop();
-    }
-  }
+  // let player1Points = this.player1.hand.length;
+  // let player2Points = this.player2.hand.length;
+
+  // if (player1.card.value > player2.card.value) {
+  //   player1Points++;
+  //   //update the deck size here
+  // } else if (player1.card.value < player2.card.value) {
+  //   player2Points++;
+  //   //update the deck size here
+  // } else {
+  //   //war
+  //   for (let i = 0; i < 3; i++) {
+  //     player1.deck.pop();
+  //     player2.deck.pop();
+  //   }
+  // }
 }
+
+Game.prototype.compare = function (card1, card2) {
+  if (values.indexOf(card1.value) > values.indexOf(card2.value)) {
+    return "player 1 wins";
+  } else if (values.indexOf(card1.value) < values.indexOf(card2.value)) {
+    return "player 2 wins";
+  }
+};
+
+Game.prototype.deal = function () {
+  this.player1.hand = this.deck.cards.slice(0, 26);
+  this.player2.hand = this.deck.cards.slice(26);
+};
+
+Game.prototype.play = function () {
+  this.deck.shuffle();
+  this.deal();
+  //this.draw();
+};
