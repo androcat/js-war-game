@@ -1,8 +1,8 @@
 import Player from "./Player.js";
 import Deck from "./Deck.js";
 
-const player1CardSlot = document.querySelector(".player1-card");
-const player2CardSlot = document.querySelector(".player2-card");
+const player1Deck = document.querySelector(".player1-deck");
+const player2Deck = document.querySelector(".player2-deck");
 const drawButton = document.querySelector(".button");
 
 const suits = ["♣", "♦", "♥", "♠"];
@@ -35,18 +35,19 @@ Game.prototype.deal = function () {
 };
 
 Game.prototype.draw = function () {
-  while (this.player1.hand.length > 0 && this.player2.hand.length > 0) {
-    const player1Card = this.player1.hand.shift();
-    const player2Card = this.player2.hand.shift();
+  // debugger;
+  //while (this.player1.hand.length > 0 && this.player2.hand.length > 0) {
+  const player1Card = this.player1.hand.shift();
+  const player2Card = this.player2.hand.shift();
 
-    // player1CardSlot.setAttribute(
-    //   "data-value",
-    //   player1Card.value + player1Card.suit
-    // );
+  // player1CardSlot.setAttribute(
+  //   "data-value",
+  //   player1Card.value + player1Card.suit
+  // );
 
-    this.pile = [player1Card, player2Card, ...this.pile];
-    this.compare(player1Card, player2Card);
-  }
+  this.pile = [player1Card, player2Card, ...this.pile];
+  this.compare(player1Card, player2Card);
+  //}
 };
 Game.prototype.compare = function (card1, card2) {
   console.log("card 1", card1);
@@ -73,6 +74,4 @@ Game.prototype.compare = function (card1, card2) {
 Game.prototype.play = function () {
   this.deck.shuffle();
   this.deal();
-  this.draw();
-  // drawButton.addEventListener("click", this.draw());
 };

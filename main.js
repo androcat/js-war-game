@@ -10,7 +10,7 @@ const game = new Game();
 // game.deck.shuffle();
 // game.deal();
 
-// drawButton.addEventListener("click", game.draw());
+drawButton.addEventListener("click", () => game.draw());
 game.play();
 
 console.log(game.player1.hand);
