@@ -2,7 +2,6 @@ import Card from "./Card.js";
 
 const suits = ["♣", "♦", "♥", "♠"];
 const values = [
-  "A",
   "2",
   "3",
   "4",
@@ -15,10 +14,11 @@ const values = [
   "J",
   "Q",
   "K",
+  "A",
 ];
 
-export default function Deck(cards = newDeck()) {
-  this.cards = cards;
+export default function Deck() {
+  this.cards = newDeck();
 }
 
 function newDeck() {
@@ -39,3 +39,5 @@ Deck.prototype.shuffle = function () {
     this.cards[i] = oldValue;
   }
 };
+
+export { suits, values };
