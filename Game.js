@@ -3,7 +3,6 @@ import Deck from "./Deck.js";
 
 const player1Deck = document.querySelector(".player1-deck");
 const player2Deck = document.querySelector(".player2-deck");
-const drawButton = document.querySelector(".button");
 
 const suits = ["♣", "♦", "♥", "♠"];
 const values = [
@@ -35,8 +34,6 @@ Game.prototype.deal = function () {
 };
 
 Game.prototype.draw = function () {
-  // debugger;
-  //while (this.player1.hand.length > 0 && this.player2.hand.length > 0) {
   const player1Card = this.player1.hand.shift();
   const player2Card = this.player2.hand.shift();
 
@@ -47,7 +44,6 @@ Game.prototype.draw = function () {
 
   this.pile = [player1Card, player2Card, ...this.pile];
   this.compare(player1Card, player2Card);
-  //}
 };
 Game.prototype.compare = function (card1, card2) {
   console.log("card 1", card1);
@@ -69,6 +65,8 @@ Game.prototype.compare = function (card1, card2) {
     ];
     console.log(this.pile);
   }
+  player1Deck.innerHTML = this.player1.hand.length;
+  player2Deck.innerHTML = this.player2.hand.length;
 };
 
 Game.prototype.play = function () {

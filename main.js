@@ -6,10 +6,6 @@ const drawButton = document.querySelector(".button");
 
 const game = new Game();
 
-// drawButton.addEventListener("click", game.draw());
-// game.deck.shuffle();
-// game.deal();
-
 drawButton.addEventListener("click", () => game.draw());
 game.play();
 
