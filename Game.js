@@ -7,6 +7,8 @@ const player2Deck = document.querySelector(".player2-deck");
 const player1CardSlot = document.querySelector(".player1-card");
 const player2CardSlot = document.querySelector(".player2-card");
 
+const winnerText = document.querySelector(".text");
+
 const suits = ["♣", "♦", "♥", "♠"];
 const values = [
   "2",
@@ -57,13 +59,13 @@ Game.prototype.compare = function (card1, card2) {
   if (values.indexOf(card1.value) > values.indexOf(card2.value)) {
     this.player1.hand = [...this.player1.hand, ...this.pile];
     this.pile = [];
-    console.log("player 1 wins this round");
+    winnerText.innerHTML = "Player 1 wins this round";
   } else if (values.indexOf(card1.value) < values.indexOf(card2.value)) {
     this.player2.hand = [...this.player2.hand, ...this.pile];
     this.pile = [];
-    console.log("player 2 wins this round");
+    winnerText.innerHTML = "Player 2 wins this round";
   } else {
-    console.log("WAR!");
+    winnerText.innerHTML = "WAR!";
     this.pile = [
       ...this.player1.hand.splice(0, 3), // Grabbing the first 3 of the players' hands to add to pot
       ...this.player2.hand.splice(0, 3),
@@ -71,6 +73,9 @@ Game.prototype.compare = function (card1, card2) {
     ];
     console.log(this.pile);
   }
+
+  // if (this.player1.hand.length === 0) {
+  // }
   player1Deck.innerHTML = this.player1.hand.length;
   player2Deck.innerHTML = this.player2.hand.length;
 };
