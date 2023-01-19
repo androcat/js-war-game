@@ -4,6 +4,9 @@ import Deck from "./Deck.js";
 const player1Deck = document.querySelector(".player1-deck");
 const player2Deck = document.querySelector(".player2-deck");
 
+const player1CardSlot = document.querySelector(".player1-card");
+const player2CardSlot = document.querySelector(".player2-card");
+
 const suits = ["♣", "♦", "♥", "♠"];
 const values = [
   "2",
@@ -48,6 +51,9 @@ Game.prototype.draw = function () {
 Game.prototype.compare = function (card1, card2) {
   console.log("card 1", card1);
   console.log("card 2", card2);
+  player1CardSlot.innerHTML = card1.value + card1.suit;
+  player2CardSlot.innerHTML = card2.value + card2.suit;
+
   if (values.indexOf(card1.value) > values.indexOf(card2.value)) {
     this.player1.hand = [...this.player1.hand, ...this.pile];
     this.pile = [];
