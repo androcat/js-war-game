@@ -59,11 +59,11 @@ Game.prototype.compare = function (card1, card2) {
   if (values.indexOf(card1.value) > values.indexOf(card2.value)) {
     this.player1.hand = [...this.player1.hand, ...this.pile];
     this.pile = [];
-    winnerText.innerHTML = "Player 1 wins this round";
+    winnerText.innerHTML = "Red Player wins this round";
   } else if (values.indexOf(card1.value) < values.indexOf(card2.value)) {
     this.player2.hand = [...this.player2.hand, ...this.pile];
     this.pile = [];
-    winnerText.innerHTML = "Player 2 wins this round";
+    winnerText.innerHTML = "Blue Player wins this round";
   } else {
     winnerText.innerHTML = "WAR!";
     this.pile = [
@@ -74,8 +74,11 @@ Game.prototype.compare = function (card1, card2) {
     console.log(this.pile);
   }
 
-  // if (this.player1.hand.length === 0) {
-  // }
+  if (this.player1.hand.length === 0) {
+    winnerText.innerHTML = "Blue player won";
+  } else if (this.player2.hand.length === 0) {
+    winnerText.innerHTML = "Red player won";
+  }
   player1Deck.innerHTML = this.player1.hand.length;
   player2Deck.innerHTML = this.player2.hand.length;
 };
